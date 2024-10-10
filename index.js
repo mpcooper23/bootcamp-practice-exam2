@@ -93,9 +93,54 @@ const collection = [
 
 // PROBLEM #1 //
 
-let setDigitalCode = function(){
-
+const setDigitalCode = function(){
+   
 };
 
 // PROBLEM #2 //
 
+const filterByGenreTag = function(){
+    
+}
+
+
+
+// PROBLEM #3 //
+
+const filterBySpecialFeatureType = function(){
+    
+};
+
+
+// PROBLEM #4 //
+
+const getTopSpecialFeature = function(array, title){
+    
+};
+
+
+// PROBLEM #5 //
+
+const mapTitles = function(){
+    
+};
+
+
+
+// PROBLEM #6 //
+
+const mapSpecialFeatures = function(){
+    
+};
+
+// PROBLEM #7 //
+
+const createNonsenseString = function(){
+    
+};
+
+// PROBLEM #8 //
+
+const getValues = function(){
+    
+};
