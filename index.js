@@ -101,7 +101,7 @@ const setDigitalCode = function(){
 
 const filterByGenreTag = function(){
     
-}
+};
 
 
 
