@@ -91,10 +91,27 @@ const collection = [
     }
 ];
 
-// PROBLEM #1 //
+// PROBLEM #1 
+/*1. Every movie object has a property of `digitalCode` that is currently set to null. Create a function called `setDigitalCode` that takes in two parameters 
+- `array` and `value`; `array` represents an array of movie objects; `value` represents the value we want to apply to the `digitalCode` property 
+(this will always be either true or false). This function should iterate through the input array BACKWARDS and only access every other movie as iterates. 
+As it iterates, it should set the current movie's `digitalCode` property to the input `value`. This function should return the input array at the end.
+```
+setDigitalCode(collection, true);
 
-const setDigitalCode = function(){
-   
+// => [ {set to true}, {}, {set to true}, {}, {set to true}]
+I: array, value
+O: input array
+C: reverse loop and push every other item to set digitalcode value
+*/
+
+
+const setDigitalCode = function(array, value){
+    output = []
+   for (let i = array.length - 1; i < 0; i - 2){
+let value = array[i].digitalCodes;
+output.push(value)
+   }
 };
 
 // PROBLEM #2 //
