@@ -107,11 +107,11 @@ C: reverse loop and push every other item to set digitalcode value
 
 
 const setDigitalCode = function(array, value){
-    output = []
-   for (let i = array.length - 1; i < 0; i - 2){
-let value = array[i].digitalCodes;
-output.push(value)
-   }
+
+   for (let i = array.length - 1; i >= 0; i -= 2){
+array[i].digitalCode = value
+}
+return array
 };
 
 // PROBLEM #2 //
