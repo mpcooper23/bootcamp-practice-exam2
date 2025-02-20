@@ -101,8 +101,8 @@ setDigitalCode(collection, true);
 
 // => [ {set to true}, {}, {set to true}, {}, {set to true}]
 I: array, value
-O: input array
-C: reverse loop and push every other item to set digitalcode value
+O: input array, no output array needed
+C: reverse loop and assign every other item (i.e. loop iteration) to set digitalcode value
 */
 
 
@@ -114,18 +114,46 @@ array[i].digitalCode = value
 return array
 };
 
+
+
 // PROBLEM #2 //
 
-const filterByGenreTag = function(){
-    
+/*Create a function called filterByGenreTag that takes in two parameters - array and tag; 
+array represents an array of movie objects; tag represents a string of a certain genre designation. 
+This function should use the native filter method to return a new array of only the movie objects 
+that contain the input genre tag.
+const horror = filterByGenreTag(collection, 'Horror');
+console.log(horror); // => [{Psycho}, {The Thing}, {Fright Night}]*/
+
+const filterByGenreTag = function(array, tag){
+    return array.filter(movie => {
+        if(movie.genreTags.includes(tag)){//use INCLUDES
+            return 1
+        }else{
+            return 0
+        } 
+    })
 };
 
 
 
 // PROBLEM #3 //
+/* Create a function called filterBySpecialFeatureType that takes in two parameters - array and type. 
+array represents an array of movie objects; type represents a string describing the type of special feature. 
+This function should use the native filter method to return a new array of only the movie objects that contain 
+that type of special feature.
+const interviews = filterBySpecialFeatureType(collection, 'Interview');
+console.log(interviews); // => [{Rear Window}, {Big Trouble in Little China}, {Fright Night}] */
 
-const filterBySpecialFeatureType = function(){
-    
+const filterBySpecialFeatureType = function(array, type){
+    return array.filter(movie => {
+        for (let i = 0; i < movie.specialFeatures.length; i++){
+            if(movie[i].specialFeatures === type){
+                array.push(type)
+            }
+        }
+        return array
+    })
 };
 
 
