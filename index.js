@@ -148,7 +148,7 @@ console.log(interviews); // => [{Rear Window}, {Big Trouble in Little China}, {F
 const filterBySpecialFeatureType = function(array, type) {
     return array.filter(movie => {
       // Check if any special feature in the movie matches the specified type
-      return movie.specialFeatures && movie.specialFeatures.some(feature => feature.type === type);
+      return movie.specialFeatures && movie.specialFeatures.filter(feature => feature.type === type);
     });
   };
   
@@ -176,21 +176,19 @@ const filterBySpecialFeatureType = function(array, type) {
  *
  */
 
-const getTopSpecialFeature = function(array, title, output = ''){
+const getTopSpecialFeature = function(array, title){
     //base
 
 if(array.length === 0){
     return 'no matching title found';
 }
     //recursion
-    if (array[0].title !== title){
-        return 'no matching title found'
-    }
+
 if(array[0].title === title){
-    output += `${array[0].title} + ${array[0].specialFeatures[0].title}`
+    return `${array[0].title} Special Feature: ${array[0].specialFeatures[0].title}`;
 }
 
-    return getTopSpecialFeature(array.slice(1), title, output)
+    return getTopSpecialFeature(array.slice(1), title)
 };
 
 
