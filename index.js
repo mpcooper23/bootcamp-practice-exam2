@@ -145,19 +145,36 @@ that type of special feature.
 const interviews = filterBySpecialFeatureType(collection, 'Interview');
 console.log(interviews); // => [{Rear Window}, {Big Trouble in Little China}, {Fright Night}] */
 
-const filterBySpecialFeatureType = function(array, type){
+const filterBySpecialFeatureType = function(array, type) {
     return array.filter(movie => {
-        for (let i = 0; i < movie.specialFeatures.length; i++){
-            if(movie[i].specialFeatures === type){
-                array.push(type)
-            }
-        }
-        return array
-    })
-};
+      // Check if any special feature in the movie matches the specified type
+      return movie.specialFeatures && movie.specialFeatures.some(feature => feature.type === type);
+    });
+  };
+  
+  // Example usage:
+  //const interviews = filterBySpecialFeatureType(collection, 'Interview');
+  //console.log(interviews);
+  // Output: [
+  //   { title: "Rear Window", ... },
+  //   { title: "Big Trouble in Little China", ... },
+  //   { title: "Fright Night", ... }
+  // ]
+  
+ 
 
 
 // PROBLEM #4 //
+/**
+ * Create a function called getTopSpecialFeature that takes in one parameter - array and title. 
+ * array represents an array of movie objects; title represents a string of the title of a film. 
+ * This function should use recursion to iterate through the array. If a movie with the title is 
+ * found, the function should return a string of the movie's title followed by the title of the 
+ * first special feature in the film's specialFeatures array. If no movie is found matching that 
+ * title, the function should return "no movie found matching that title".
+
+ *
+ */
 
 const getTopSpecialFeature = function(array, title){
     
@@ -166,26 +183,63 @@ const getTopSpecialFeature = function(array, title){
 
 // PROBLEM #5 //
 
-const mapTitles = function(){
+/**
+ * Create a function called mapTitles that takes in one parameter - array - which represents an array of movie objects. 
+ * This function should use the native map method to return a new array of the movie's title, year, and director as strings.
+const titles = mapTitles(collection);
+console.log(titles); 
+// =>
+[
+    "Rear Window (1954) - dir. Alfred Hitchcock",
+    "Psycho (1960) - dir. Alfred Hitchcock",
+    "The Thing (1982) - dir. John Carpenter",
+    "Big Trouble in Little China (1986) - dir. John Carpenter",
+    "Fright Night (1985) - dir. Tom Holland"
+]
+ */
+
+const mapTitles = function(array){
     
 };
 
 
 
 // PROBLEM #6 //
+/**
+ * Create a function called mapSpecialFeatures that takes in one parameter - array - which represents an array of movie objects. 
+ * This function should use the native map method to return a new array subarrays. Each subarray in the array that is returned 
+ * should be the strings of the titles of special features.
+ */
 
-const mapSpecialFeatures = function(){
+const mapSpecialFeatures = function(array){
     
 };
 
 // PROBLEM #7 //
 
-const createNonsenseString = function(){
+/**
+ * Create a function called createNonsenseString that takes in two parameters - array and index. array represents an array of movie objects, 
+ * and index represents the index of a string. This function should use the native reduce method to iterate over the array and accumulate a 
+ * string by accessing the index of each movie's title and adding it to an output string.
+const string = createNonsenseString(collection, 1);
+console.log(string); // => 'eshir' 
+
+(`e` is at the 1 index of 'Rear Window', `s` is at the 1 index of 'Psycho', etc...)
+ */
+
+const createNonsenseString = function(array, index){
     
 };
 
 // PROBLEM #8 //
 
-const getValues = function(){
+/**
+ * Create a function called getValues that takes in two parameters - object and props. object represents an individual movie object and props 
+ * represents an array of keys that exist in the object. This function should return a new array of the values that exist at those keys.
+const rearWindowValues = getValues(collection[0], ['title', 'year', 'director']);
+console.log(rearWindowValues); // => ['Rear Window', 1954, 'Alfred Hitchcock']
+ */
+
+const getValues = function(object, props){
     
 };
