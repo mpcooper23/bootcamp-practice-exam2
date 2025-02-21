@@ -176,8 +176,21 @@ const filterBySpecialFeatureType = function(array, type) {
  *
  */
 
-const getTopSpecialFeature = function(array, title){
-    
+const getTopSpecialFeature = function(array, title, output = ''){
+    //base
+
+if(array.length === 0){
+    return 'no matching title found';
+}
+    //recursion
+    if (array[0].title !== title){
+        return 'no matching title found'
+    }
+if(array[0].title === title){
+    output += `${array[0].title} + ${array[0].specialFeatures[0].title}`
+}
+
+    return getTopSpecialFeature(array.slice(1), title, output)
 };
 
 
@@ -199,7 +212,12 @@ console.log(titles);
  */
 
 const mapTitles = function(array){
-    
+    return array.map(movie => {
+        let title = movie.title
+        let year = movie.year
+        let director = movie.director
+        return `${title} (${year}) - dir. ${director}`
+    })
 };
 
 
@@ -209,11 +227,21 @@ const mapTitles = function(array){
  * Create a function called mapSpecialFeatures that takes in one parameter - array - which represents an array of movie objects. 
  * This function should use the native map method to return a new array subarrays. Each subarray in the array that is returned 
  * should be the strings of the titles of special features.
+ * I: array
+ * 0: array of subarrays
  */
 
 const mapSpecialFeatures = function(array){
-    
+    return array.map(movie => {
+        let newArr = []
+        if(movie.specialFeatures)
+        for(let i = 0; i < movie.specialFeatures.length; i++){
+            newArr.push(movie.specialFeatures[i].title)
+        }
+        return newArr
+    })
 };
+
 
 // PROBLEM #7 //
 
@@ -225,21 +253,44 @@ const string = createNonsenseString(collection, 1);
 console.log(string); // => 'eshir' 
 
 (`e` is at the 1 index of 'Rear Window', `s` is at the 1 index of 'Psycho', etc...)
+
+I: arr and index
+O: output string with the inputted indexes forming the characters
+C:reduce
  */
 
 const createNonsenseString = function(array, index){
-    
+    return array.reduce((acc, current) => {
+        if(array[index].title)
+acc += current.title[index];
+return acc;
+    }, '')
 };
 
 // PROBLEM #8 //
 
 /**
  * Create a function called getValues that takes in two parameters - object and props. object represents an individual movie object and props 
- * represents an array of keys that exist in the object. This function should return a new array of the values that exist at those keys.
+ represents an array of keys that exist in the object. This function should return a new array of the values that exist at those keys.
+
 const rearWindowValues = getValues(collection[0], ['title', 'year', 'director']);
 console.log(rearWindowValues); // => ['Rear Window', 1954, 'Alfred Hitchcock']
  */
 
-const getValues = function(object, props){
+const getValues = function(object, props) {
+    let newArr = [];
     
-};
+    for (let i = 0; i < props.length; i++) {
+      const key = props[i];
+      if (object.hasOwnProperty(key)) {
+        newArr.push(object[key]);
+      }
+    }
+    
+    return newArr;
+  };
+  
+  // Example usage:
+  const rearWindowValues = getValues(collection[0], ['title', 'year', 'director']);
+  console.log(rearWindowValues); // Output: ['Rear Window', 1954, 'Alfred Hitchcock']
+  
