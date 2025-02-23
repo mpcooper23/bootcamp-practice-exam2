@@ -147,14 +147,19 @@ console.log(interviews); // => [{Rear Window}, {Big Trouble in Little China}, {F
 
 const filterBySpecialFeatureType = function(array, type) {
     return array.filter(movie => {
-        for(let i = 0; i < movie.specialFeatures.length; i++){
-            if(movie.specialFeatures[i].type === type){
-                return true
-            }
+      if (movie.specialFeatures) {
+        for (let i = 0; i < movie.specialFeatures.length; i++) {
+          if (movie.specialFeatures[i].type === type) {
+            return true;
+          }
         }
-    })
+      }
+      return false;
+    });
   };
   
+  // Example usage:
+
   // Example usage:
   //const interviews = filterBySpecialFeatureType(collection, 'Interview');
   //console.log(interviews);
