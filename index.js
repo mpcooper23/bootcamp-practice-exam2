@@ -147,9 +147,12 @@ console.log(interviews); // => [{Rear Window}, {Big Trouble in Little China}, {F
 
 const filterBySpecialFeatureType = function(array, type) {
     return array.filter(movie => {
-      // Check if any special feature in the movie matches the specified type
-      return movie.specialFeatures && movie.specialFeatures.filter(feature => feature.type === type);
-    });
+        for(let i = 0; i < movie.specialFeatures.length; i++){
+            if(movie.specialFeatures[i].type === type){
+                return true
+            }
+        }
+    })
   };
   
   // Example usage:
