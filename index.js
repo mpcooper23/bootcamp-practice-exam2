@@ -239,13 +239,13 @@ const mapTitles = function(array){
 
 const mapSpecialFeatures = function(array){
     return array.map(movie => {
-        let newArr = []
-        if(movie.specialFeatures)
-        for(let i = 0; i < movie.specialFeatures.length; i++){
-            newArr.push(movie.specialFeatures[i].title)
+        let output = []
+        for (let i = 0; i < movie.specialFeatures.length; i++){
+            output.push(movie.specialFeatures[i].title)
         }
-        return newArr
+        return output
     })
+  
 };
 
 
