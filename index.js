@@ -106,13 +106,6 @@ C: reverse loop and assign every other item (i.e. loop iteration) to set digital
 */
 
 
-const setDigitalCode = function(array, value){
-
-   for (let i = array.length - 1; i >= 0; i -= 2){
-array[i].digitalCode = value
-}
-return array
-};
 
 
 
@@ -125,15 +118,7 @@ that contain the input genre tag.
 const horror = filterByGenreTag(collection, 'Horror');
 console.log(horror); // => [{Psycho}, {The Thing}, {Fright Night}]*/
 
-const filterByGenreTag = function(array, tag){
-    return array.filter(movie => {
-        if(movie.genreTags.includes(tag)){//use INCLUDES
-            return 1
-        }else{
-            return 0
-        } 
-    })
-};
+
 
 
 
@@ -145,18 +130,6 @@ that type of special feature.
 const interviews = filterBySpecialFeatureType(collection, 'Interview');
 console.log(interviews); // => [{Rear Window}, {Big Trouble in Little China}, {Fright Night}] */
 
-const filterBySpecialFeatureType = function(array, type) {
-    return array.filter(movie => {
-      if (movie.specialFeatures) {
-        for (let i = 0; i < movie.specialFeatures.length; i++) {
-          if (movie.specialFeatures[i].type === type) {
-            return true;
-          }
-        }
-      }
-      return false;
-    });
-  };
   
   // Example usage:
 
@@ -184,20 +157,7 @@ const filterBySpecialFeatureType = function(array, type) {
  *
  */
 
-const getTopSpecialFeature = function(array, title){
-    //base
 
-if(array.length === 0){
-    return 'no matching title found';
-}
-    //recursion
-
-if(array[0].title === title){
-    return `${array[0].title} Special Feature: ${array[0].specialFeatures[0].title}`;
-}
-
-    return getTopSpecialFeature(array.slice(1), title)
-};
 
 
 // PROBLEM #5 //
@@ -217,14 +177,7 @@ console.log(titles);
 ]
  */
 
-const mapTitles = function(array){
-    return array.map(movie => {
-        let title = movie.title
-        let year = movie.year
-        let director = movie.director
-        return `${title} (${year}) - dir. ${director}`
-    })
-};
+
 
 
 
@@ -237,16 +190,7 @@ const mapTitles = function(array){
  * 0: array of subarrays
  */
 
-const mapSpecialFeatures = function(array){
-    return array.map(movie => {
-        let output = []
-        for (let i = 0; i < movie.specialFeatures.length; i++){
-            output.push(movie.specialFeatures[i].title)
-        }
-        return output
-    })
-  
-};
+
 
 
 // PROBLEM #7 //
@@ -265,13 +209,7 @@ O: output string with the inputted indexes forming the characters
 C:reduce
  */
 
-const createNonsenseString = function(array, index){
-    return array.reduce((acc, current) => {
-        if(array[index].title)
-acc += current.title[index];
-return acc;
-    }, '')
-};
+
 
 // PROBLEM #8 //
 
@@ -283,18 +221,7 @@ const rearWindowValues = getValues(collection[0], ['title', 'year', 'director'])
 console.log(rearWindowValues); // => ['Rear Window', 1954, 'Alfred Hitchcock']
  */
 
-const getValues = function(object, props) {
-    let newArr = [];
-    
-    for (let i = 0; i < props.length; i++) {
-      const key = props[i];
-      if (object.hasOwnProperty(key)) {
-        newArr.push(object[key]);
-      }
-    }
-    
-    return newArr;
-  };
+
   
   // Example usage:
   const rearWindowValues = getValues(collection[0], ['title', 'year', 'director']);
